@@ -1,0 +1,21 @@
+tables의 이름은 Assignment입니다.
+
+설명서(이동). 
+
+
+기본 4개 = signup, search, delete, file upload
+기본4개.php-> 기본 4개 , allresult, login
+all result->기본 4개, login
+
+login -> (성공시)  update, login,기본 4개
+login -> (실패시) find id, find password, login , 기본 4개
+
+find id ->(성공시) find password, login     (찾는거 실패시엔 그냥 이전페이지(find id)로 다시돌아감)
+find password ->(성공시) update, login ,기본4개  (실패시엔 다시 find password 페이지로)
+
+update=login 성공이나, 비밀번호 찾기성공한 id를 GET으로 받는 페이지로서 GET한 id의 정보를 수정
+	정보 변경시에, 메시지 출력됨. (이전 정보와 같은 정보 update시 실패메시지)
+	이동가능 페이지는 기본4개, all result , login
+	
+cf)
+file upload시 uploads폴더에 저장됨. 저장되는 태그를 가진 파일 함께 첨부(ex1.xml)

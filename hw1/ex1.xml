@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<school>
+  <student category="1">
+    <id>arm05097</id>
+    <password>asdf1234</password>
+    <mail>arm05907@naver.com</mail>
+    <home_address>korea</home_address>
+    <phone>010-9999-9999</phone>
+    <school>sogang</school>
+    <major>math</major>
+    <interest>game</interest>
+  </student>
+  <student category="2">
+    <id>arm05dss97</id>
+    <password>asd1234</password>
+    <mail>arm0597@naver.com</mail>
+    <home_address>krea</home_address>
+    <phone>010-9991-9999</phone>
+    <school>sogag</school>
+    <major>math</major>
+    <interest>game</interest>
+  </student>
+</school>

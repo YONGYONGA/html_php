@@ -1,0 +1,50 @@
+<HTML>
+<TITLE>Assignment_20171300 </TITLE>
+<H1>Sign Up</H1>
+<HR>
+<FORM METHOD="GET" ACTION="http://cspro.sogang.ac.kr/~cse20171300/cgi-bin/signup.php">
+<H2>CSE20171300 Sign Up Page</H2>
+ID :  <INPUT type="text" NAME="id" required> <P>
+Password : <INPUT Type="password" NAME="password" required> <P> 
+e-mail : <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="mail" placeholder="abc@naver.com" required>
+<P>
+Home Address : <INPUT NAME="address" required><P>
+Phone number : <input type="tel" name="phone" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" placeholder="010-1234-1234" required>
+<P>
+School : <INPUT NAME="school" required><P>
+Major : <P>
+<UL>
+<LI><INPUT TYPE="radio" NAME="major" VALUE="Computer Science">Computer Science
+<LI><INPUT TYPE="radio" NAME="major" VALUE="Electronic">Electronic
+<LI><INPUT TYPE="radio" NAME="major" VALUE="Chemical and Biomolecular">Chemical and Biomolecular
+<LI><INPUT TYPE="radio" NAME="major" VALUE="Mechanical">Mechanical
+<LI><INPUT TYPE="radio" NAME="major" VALUE="Else" checked>else   
+</UL>
+<P>
+Interests : <P>
+<UL>
+    <LI><INPUT TYPE="checkbox" NAME="c1" VALUE="Computer Science">Computer Science
+        <LI><INPUT TYPE="checkbox" NAME="c2" VALUE="Electronic">Electronic
+        <LI><INPUT TYPE="checkbox" NAME="c3" VALUE="Chemical and Biomolecular">Chemical and Biomolecular
+        <LI><INPUT TYPE="checkbox" NAME="c4" VALUE="Mechanical">Mechanical
+        <LI><INPUT TYPE="checkbox" NAME="c5" VALUE="Else">else   
+</UL>
+<P><br>
+
+To Sign up, press this button: <INPUT TYPE="submit"VALUE="sign up">. <P>
+</HTML>
+<script>
+	function aaaa() {alert("possible");}
+</script>
+<script>
+    function chk(){
+    	if(document.getElementById("password1").value==document.getElementById("password2").value)
+        {
+        alert("비밀번호 일치");
+        }
+    	else{
+        	alert("비밀번호 불일치");
+        }
+    }
+</script>
+
