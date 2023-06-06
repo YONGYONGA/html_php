@@ -1,0 +1,8 @@
+1.mongodb서버 설치, mongodbcompress 설치. 사진 1처럼 mongodb가 설치되어있다.
+
+2. 몽고 db서버 시작.bat을 눌러 서버를 연다. 
+
+3. backend에서 cmd로 node app으로 app.js를 (express서버 open)실행한다.
+반드시 몽고 db연결 로그가 떠야한다.
+
+4. frontend에서 cmd로 npm start로 app.js를 (react서버 open)실행한다. 
