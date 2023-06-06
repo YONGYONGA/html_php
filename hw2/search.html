@@ -1,0 +1,134 @@
+<HTML>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<TITLE>Assignment_20171300 </TITLE>
+<H1>Sign Up Search</H1>
+<HR>
+<FORM METHOD="GET" ACTION="http://cspro.sogang.ac.kr/~cse20171300/cgi-bin/search.php">
+<H2>CSE20171300 Search Page</H2>
+
+<br> Select Options : <P>
+<UL>
+<LI><INPUT id="ga" TYPE="radio" NAME="ck" VALUE="user" checked>ID
+<LI><INPUT id="ga" TYPE="radio" NAME="ck" VALUE="password">Password
+<LI><INPUT id="ga" TYPE="radio" NAME="ck" VALUE="mail">Email
+<LI><INPUT id="ga" TYPE="radio" NAME="ck" VALUE="home_address">Address
+<LI><INPUT id="ga" TYPE="radio" NAME="ck" VALUE="phone">Phone number   
+<LI><INPUT id="ga" TYPE="radio" NAME="ck" VALUE="school">School   
+<LI><INPUT id="ga" TYPE="radio" NAME="ck" VALUE="major">Major   
+<LI><INPUT id="ga" TYPE="radio" NAME="ck" VALUE="interest">Interests   
+</UL>
+<P>
+Content : <INput id="y" name="search" required onkeyup="my_input(this.value)"><P>
+<input type="button" id="hw_a" value="search" onclick="ajax_search()">
+<input type="button" id="hw_b" value="all data"><P>
+<br>(This is hw2 button)To Search, press this button: <INPUT TYPE="submit"VALUE="Search">. <P>
+<hr>
+<H2> (Sign Up Search) Your Input:</H2>
+<div id="first"></div>
+<hr>
+<H2> Search result</H2>
+<div id="second"></div>
+<hr>
+<H2> Table Elements</H2>
+<div id="third"></div>
+<style>
+    th{
+    border:1px solid; padding : 10px 5px;
+    }
+    table{
+    border:2px solid; border-collapse: collapse;
+    vertical-align:middle;
+    }
+    td{
+    border:1px solid; padding : 10px 5px;
+    }
+</style>
+<script>
+$(document).ready(function(){
+    $("#hw_b").click(function(){
+        $.get("http://cspro.sogang.ac.kr/~cse20171300/cgi-bin/all_result_ajax.php",function(data,status){
+            //alert(data+status);
+            $("#third").html(table(data));
+        });
+    });
+
+});
+function my_input(str) {
+    var rr=radio_();
+    if (str.length == 0) { 
+        document.getElementById("first").innerHTML = "";
+        return;
+    }
+    else {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                document.getElementById("first").innerHTML = xmlhttp.responseText;
+            }
+        };
+        xmlhttp.open("GET", 
+	"http://cspro.sogang.ac.kr/~cse20171300/cgi-bin/ajax_inputcheck.php?one="+rr+"&two="+str, true);
+	//	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    
+        xmlhttp.send();
+    }
+}
+function ajax_search(){
+    var rr=radio_();
+    var ii=document.getElementById("y").value;
+    if (ii.length == 0) { 
+        document.getElementById("second").innerHTML = "";
+        return;
+    }
+    else{
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                document.getElementById("second").innerHTML = table(xmlhttp.responseText);
+            }
+        };
+        xmlhttp.open("GET", 
+	"http://cspro.sogang.ac.kr/~cse20171300/cgi-bin/ajax_search.php?one="+rr+"&two="+ii, true);
+	//	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    
+        xmlhttp.send();
+    }
+}
+function radio_(){
+    for(var i=0;i<8;i++){
+        if(document.getElementsByName("ck")[i].checked){
+            return document.getElementsByName("ck")[i].value;
+        }
+    }
+}
+function table(response){
+    var arr=JSON.parse(response);
+    var i;
+    var out="<table>";
+    if(arr.length>0){
+        out+="<th>id</th>"+
+        "<th>password</th>"+
+        "<th>Email</th>"+
+        "<th>Home address</th>"+
+        "<th>Phone number</th>"+
+        "<th>School</th>"+
+        "<th>Major</th>"+
+        "<th>Interests</th></tr>";
+    }
+        for(i=0;i<arr.length;i++){
+
+            out+="<tr><td>"+arr[i].id+"</td><td>"+
+            arr[i].password+"</td><td>"+
+            arr[i].email+"</td><td>"+
+            arr[i].Home_address+"</td><td>"+
+            arr[i].Phone_number+"</td><td>"+
+            arr[i].School+"</td><td>"+
+            arr[i].Major+"</td><td>"+
+            arr[i].Interests+"</td><tr>";
+            }
+    out+="</table>";
+            return out;
+}
+    </script>
+</HTML>
+
